@@ -2,14 +2,29 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  
 }
 .bg {
   background-attachment:fixed; 
   background-repeat: no-repeat;
   background-size: cover;
 }
+a {
+  background: transparent;
+  color:lightgoldenrodyellow;
+  font-weight: bolder;
+  text-decoration: none;
+}
+.a1 {
+  font-weight: lighter;
+}
+a:hover {
+  color: darkred;
+}
 
-
+button:hover {
+  color: darkred;
+}
 
 .mainSection {
   display: grid;
@@ -30,44 +45,55 @@ header{
 
 h1 {
   font-family: 'Tangerine', serif;
-  border: solid 1px black;
+        font-size: 5rem;
   padding: 1rem;
   text-align: center;
   grid-area: h1;
 }
-
 .button1 {
   position: absolute;
   left: 55px;
   top: 40px;
-  padding: 0px;
+  
 }
 
-.button2 {
-  position: absolute;
-  right: 10px;
-  top: 40px;
-  padding: 0px;
+button {
+  background: transparent;
+  color:lightgoldenrodyellow;
+  font-weight: bolder;
+  outline: none;
+  padding: 5px;
 }
-
-.button3 {
-  position: absolute;
-  left: 10px;
-  top: 40px;
-  padding: 0px;
+input {
+background: transparent;
+color: lightgoldenrodyellow;
+font-weight: bolder;
+height: 25px;
+}
+::-webkit-input-placeholder { /* Edge */
+color: lightgoldenrodyellow;
+text-align: center;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+color: lightgoldenrodyellow;
+text-align: center;
+}
+::placeholder {
+color: lightgoldenrodyellow;
+text-align: center;
 }
 
 .div1 {
-  border: 0.5rem solid #290c0c;
+  border: 0.5rem solid #61616150;
   border-radius: 1rem;
-  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.63);
   background-repeat: no-repeat;
   background-size: cover;
   align-items: center;
   padding: 2rem;
-  width: 60% ; 
+  width: 80% ; 
   margin: 0 auto; 
-  
+  min-height: max-content;
 }
 
 .div1 > div {
@@ -84,6 +110,11 @@ h1 {
 
  
 }
+ul{
+  background-color: #000000;
+  border-radius: 1rem;
+  font-size: 2rem;
+}
 li {
   list-style-type: none;
 }
@@ -92,6 +123,18 @@ margin-left: 2rem;
 margin-right: 2rem;
 }
 .div3 {
+  text-align: center;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 2rem;
+  width: 100%;
+  font-size: larger;
+  background-color: rgb(0, 0, 0);
+  color: white;
   text-align: center;
 }
 
@@ -109,14 +152,16 @@ margin-right: 2rem;
   border: black 1rem;
   border-radius: 0;
   width: 80%;
+  height: 100%;
   margin: auto;
   font-size: 16px;
   padding: 1rem;
-  background-color: rgba(240, 248, 255, 0.151);
+  background-color: rgba(36, 36, 36, 0.644);
   color: black;
 }
 .input2 {
     width: 50%;
+    font-size: 1.5rem;
 }
 .addButton {
   padding: 1rem;
