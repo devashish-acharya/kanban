@@ -321,8 +321,4 @@ app.post('/projects/:project_id/lists/:list_id/tasks', async (req, res) => {
     res.send()
 })
 
-app.listen(3000, () => {
-    console.log('app server running on port', 3000)
-})
-
 app.listen(process.env.PORT, () => {})
