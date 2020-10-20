@@ -4,14 +4,15 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
     <link rel="stylesheet" href="/style.css" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    
     <script src="https://unpkg.com/apprun/dist/apprun-html.js"></script>
 </head>
 <section class="mainSection">
     <header>
-        <h1>Projects</h1>
-        <button class="button1" href="/main">Home</button>
+        <h1 id="headerText">Projects</h1>
+        <button class="button1"><a href= "../index.html">Home</a></button>
 
     </header>
 </section>
@@ -54,9 +55,8 @@
     onclick="app.run('done', ${task.task_id})"
     ondragstart="app.run('onDragTask', event)"
     class="${task.status === 0 ? '' : 'done'} task"
-    >${task.text} ${task.status === 1 ? `<button class="deleteButton" onclick="app.run('deleteTask', ${task.task_id})">Delete</button>` 
-    : ''} 
-    <div class="dropUser" style="border-style: dashed blue 1px;" ondragover="event.preventDefault()" ondrop="app.run('onDropUser', event)"><h4>drop user</h4></div>   
+    >${task.text} 
+    
     </li>
     `
         }
@@ -69,11 +69,14 @@
                         <ul class="taskLists"  ondragover="event.preventDefault()" ondrop="app.run('onDropTask', event)">
                             ${list.tasks.map(viewTask).join("")}
                         </ul>
+
+                        ${list.title == 'To Do' ? `
                         <form class="form1" onsubmit="app.run('add', this);return false;">
                             <input name="task" id="taskInput" placeholder="add a task" />
                             <input name="list_id" type="hidden" value=${list.list_id}> </input>
                             <button class="addButton">+ Add</button>
                         </form> 
+                        `: ''}
                     </div>
                     `
         }
@@ -87,12 +90,13 @@
 
 
 
-                    <div class="deleteOnHover" ondragover="event.preventDefault()" ondrop="app.run('onDropDeleteTask', event)">Delete</div>
+                    
                  
                         </div>
     `
-
-
+//${task.status === 1 ? `<button class="deleteButton" onclick="app.run('deleteTask', ${task.task_id})">Delete</button>` 
+//: ''} 
+//    <div class="deleteOnHover" ondragover="event.preventDefault()" ondrop="app.run('onDropDeleteTask', event)">Delete</div>
 
 
         const update = {
@@ -177,6 +181,9 @@
         app.start('projectView', state, view, update)
         app.run(`getLists`, project_id)
     </script>
+    <div class="footer">
+        <p>Copyright OneOfAKanBan ©</p>
+      </div>
 </body>
 
 </html>
