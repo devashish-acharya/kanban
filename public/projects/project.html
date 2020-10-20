@@ -24,17 +24,17 @@
         console.log(document.location, project_id)
 
         class Task {
-            constructor(text) {
-                this.task_id = window.crypto.getRandomValues(new Uint8Array(3)).join(""),
-                    this.text = text,
-                    this.status = 0,
-                    this.users = []
+            constructor(text, task_id) {
+                this.task_id = task_id || window.crypto.getRandomValues(new Uint8Array(3)).join("")
+                this.text = text
+                this.status = 0
+                this.users = []
             }
         }
         class List {
             constructor(title) {
-                this.list_id = window.crypto.getRandomValues(new Uint8Array(3)).join(""),
-                    this.title = title,
+                this.list_id = window.crypto.getRandomValues(new Uint8Array(3)).join("")
+                    this.title = title
                     this.tasks = []
             }
         }
@@ -69,7 +69,11 @@
                         <ul class="taskLists"  ondragover="event.preventDefault()" ondrop="app.run('onDropTask', event)">
                             ${list.tasks.map(viewTask).join("")}
                         </ul>
-                       
+                        <form class="form1" onsubmit="app.run('add', this);return false;">
+                            <input name="task" id="taskInput" placeholder="add a task" />
+                            <input name="list_id" type="hidden" value=${list.list_id}> </input>
+                            <button class="addButton">+ Add</button>
+                        </form> 
                     </div>
                     `
         }
@@ -80,10 +84,7 @@
                     ${state.lists.map(viewList).join("")}
                        
             </div>
-            <form class="form1" onsubmit="app.run('add', this);return false;">
-                            <input name="task" id="taskInput" placeholder="add a task" />
-                            <button class="addButton">+ Add</button>
-                        </form> 
+
 
 
                     <div class="deleteOnHover" ondragover="event.preventDefault()" ondrop="app.run('onDropDeleteTask', event)">Delete</div>
@@ -97,8 +98,10 @@
         const update = {
             add: async (state, form) => {
                 const data = new FormData(form)
+                const list_id = data.get('list_id')
+              
                 const task = new Task(data.get('task'))
-
+        
                 const postRequest = {
                     method: 'POST',
                     headers: {
@@ -106,10 +109,13 @@
                     },
                     body: JSON.stringify(task)
                 }
+
+                const list = state.lists.find(list => list.list_id === data.get('list_id'))
+                list.tasks.push(task)
                 console.log("new task")
                 console.log(task) //this is right
-                console.log("to do list tasks")
-                console.log(state.toDoTasks) //this is right
+                // console.log("to do list tasks")
+                // console.log(list.tasks) //this is right
                 fetch(`/projects/${project_id}/lists/${list_id}/tasks`, postRequest).then(() => app.run('getTasks'))
                 return state
             },
@@ -123,6 +129,7 @@
 
                 state.lists = await fetch(`/projects/${project_id}`).then(res => res.json())
                 state.lists = state.lists.lists //cheating...
+                
                 console.log(state.lists)
                 return state
             },
@@ -157,9 +164,9 @@
             },
             getTasks: async (state, project_id, list_id)  => {
                 console.log('project get tasks')
-                console.log(project_id, list_id) //this works     
-                state.tasks = await fetch(`/projects/${project_id}/lists/${list_id}`).then(res => res.json())
-                state.tasks = state.tasks.tasks //cheating...
+                console.log(project_id, list_id)   
+                state.tasks = await fetch(`/projects/${project_id}/lists/${list_id}/tasks`).then(res => res.json())
+                state.tasks = state.tasks.tasks 
                 console.log(state.tasks)
                 return state
             },

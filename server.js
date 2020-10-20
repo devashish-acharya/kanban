@@ -1,3 +1,4 @@
+const { request } = require('express')
 const express = require('express')
 const app = express()
 
@@ -311,11 +312,13 @@ app.get('/projects/:project_id', (req, res) => {
 })
 
 
-//GETTING PROJECT PAGE
+
 app.post('/projects/:project_id/lists/:list_id/tasks', async (req, res) => {
-    console.log(req.body)
-    tasks.push(req.body)
-    res.send(tasks)
+    const project = projects.find(project => project.project_id === req.params.project_id)
+    const list = project.lists.find(list => list.list_id === req.params.list_id)
+    list.tasks.push(req.body)
+    
+    res.send()
 })
 
 app.listen(3000, () => {
