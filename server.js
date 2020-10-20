@@ -321,8 +321,4 @@ app.post('/projects/:project_id/lists/:list_id/tasks', async (req, res) => {
     res.send()
 })
 
-app.listen(process.env.PORT, () => {
-    sequelize.sync(() => {
-        console.log('Kanban app running on port', process.env.PORT)
-    })
-})
+app.listen(process.env.PORT, () => {})
