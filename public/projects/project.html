@@ -11,7 +11,7 @@
 <section class="mainSection">
     <header>
         <h1>Projects</h1>
-        <button class="button1" href="/main">Home</button>
+        <button class="button1"><a href= "../index.html">Home</a></button>
 
     </header>
 </section>
@@ -56,7 +56,7 @@
     class="${task.status === 0 ? '' : 'done'} task"
     >${task.text} ${task.status === 1 ? `<button class="deleteButton" onclick="app.run('deleteTask', ${task.task_id})">Delete</button>` 
     : ''} 
-    <div class="dropUser" style="border-style: dashed blue 1px;" ondragover="event.preventDefault()" ondrop="app.run('onDropUser', event)"><h4>drop user</h4></div>   
+    
     </li>
     `
         }
@@ -69,11 +69,14 @@
                         <ul class="taskLists"  ondragover="event.preventDefault()" ondrop="app.run('onDropTask', event)">
                             ${list.tasks.map(viewTask).join("")}
                         </ul>
+
+                        ${list.title == 'To Do' ? `
                         <form class="form1" onsubmit="app.run('add', this);return false;">
                             <input name="task" id="taskInput" placeholder="add a task" />
                             <input name="list_id" type="hidden" value=${list.list_id}> </input>
                             <button class="addButton">+ Add</button>
                         </form> 
+                        `: ''}
                     </div>
                     `
         }
@@ -87,12 +90,12 @@
 
 
 
-                    <div class="deleteOnHover" ondragover="event.preventDefault()" ondrop="app.run('onDropDeleteTask', event)">Delete</div>
+                    
                  
                         </div>
     `
 
-
+//    <div class="deleteOnHover" ondragover="event.preventDefault()" ondrop="app.run('onDropDeleteTask', event)">Delete</div>
 
 
         const update = {
