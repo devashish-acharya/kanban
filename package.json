@@ -4,8 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "watch": "NODE_ENV=dev PORT=3000 nodemon server.js",
+    "test": "PORT=3001 jest --watchAll",
+    "test:cypress": "PORT=3001 cypress open"
+  },
+  "engines": {
+    "node": "14",
+    "npm": "6"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +20,8 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.1.0",
     "handlebars": "^4.7.6",
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "sequelize": "^6.3.5",
+    "sqlite3": "^5.0.0"
   }
 }

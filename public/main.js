@@ -17,9 +17,9 @@ const view = (state) => `
    <li id="log">${project.text}
         <button onclick="app.run('delete', ${project.project_id} )" >❌</button> 
         <button onclick="app.run('showEdit', ${project.project_id} )" >📝</button>
-        <form onsubmit="app.run('edit', ${project.project_id}, this ); return false" id="${project.project_id}" hidden><input class="input2" name="text" placeholder="Edit name here">
-        <button >Confirm Edit</button></form>
-        <a href="/projects/project.html?project_id=${project.project_id}">Visit Project</a>
+        <form onsubmit="app.run('edit', ${project.project_id}, this ); return false" id="${project.project_id}" hidden><input class="input2" name="text" placeholder="Edit name here" required>
+        <button >✅</button></form>
+        <a class="a1" href="/projects/project.html?project_id=${project.project_id}">Visit Project</a>
         </li>
         <ul>
             <br>
@@ -30,7 +30,7 @@ const view = (state) => `
         <form onsubmit="app.run('add', this);return false;">
         <br>
         <br>
-            <input class="input1" name="text" placeholder="Add project" />
+            <input class="input1" name="text" placeholder="Add project" required/>
             <button class="addButton">Add</button>
         </form>
     </div>
