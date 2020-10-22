@@ -33,8 +33,7 @@ const view = (state) => `
             <input class="input1" name="text" placeholder="Add project" required/>
             <button class="addButton">Add</button>
         </form>
-    </div>
-    
+    </div  
 `
 const update = {
     add: async (state, form) => {

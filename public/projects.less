@@ -9,79 +9,36 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-a {
+
+
+header {
+  #logo-main {
+    display: block;
+    margin: 20px auto;
+  }
+}
+
+#navbar-primary.navbar-default {
   background: transparent;
-  color:lightgoldenrodyellow;
-  font-weight: bolder;
-  text-decoration: none;
+  border: none;
+  .navbar-nav { 
+    width: 100%;
+    text-align: center;
+    > li {
+      display: inline-block;
+      float: none;
+      > a {
+        padding-left: 30px;
+        padding-right: 30px;
+        }
+    }
+  }
 }
-.a1 {
-  font-weight: lighter;
-}
-a:hover {
-  color: darkred;
-}
-
-button:hover {
-  color: darkred;
-}
-
-.mainSection {
-  display: grid;
-  height: 20vh;
-  grid-template-rows: 5% 10%;
-  grid-template-columns: auto auto auto;
-  grid-template-areas:
-      'header header header'
-}
-header{
+    
   
-  color: white;
-  background-color: rgb(5, 5, 5);
-  padding: 30px 100px 100px 100px;
-  border: 1px solid black;
-  grid-area: header;
-}
 
-h1 {
-  font-family: 'Tangerine', serif;
-        font-size: 5rem;
-  padding: 1rem;
-  text-align: center;
-  grid-area: h1;
-}
-.button1 {
-  position: absolute;
-  left: 55px;
-  top: 40px;
-  
-}
 
-button {
-  background: transparent;
-  color:lightgoldenrodyellow;
-  font-weight: bolder;
-  outline: none;
-  padding: 5px;
-}
-input {
-background: transparent;
-color: lightgoldenrodyellow;
-font-weight: bolder;
-height: 25px;
-}
-::-webkit-input-placeholder { /* Edge */
-color: lightgoldenrodyellow;
-text-align: center;
-}
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-color: lightgoldenrodyellow;
-text-align: center;
-}
-::placeholder {
-color: lightgoldenrodyellow;
-text-align: center;
-}
+
 
 .div1 {
   border: 0.5rem solid #61616150;
@@ -115,7 +72,7 @@ ul{
   border-radius: 1rem;
   font-size: 2rem;
 }
-li {
+#log {
   list-style-type: none;
 }
 .div2 {
