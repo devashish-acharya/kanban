@@ -16,7 +16,7 @@ const io = socketio(server)
 //setting static
 app.use(express.static(path.join(__dirname, 'public')));
 
-const botName = 'Kanban Bot';
+const botName = 'Kanban Bot&nbsp;';
 
 //run when client connects
 io.on('connection', socket => {
